@@ -1,46 +1,45 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.blue.shade600,
         appBar: AppBar(
-          title: const Center(child: Text('Dicee')),
-          backgroundColor: Colors.red,
+          title: const Center(child: Text('Ask Me Anything')),
+          backgroundColor: Colors.blue,
         ),
-        body:  DicePage(),
+        body: const BallPage(),
       ),
     );
   }
 }
 
-class DicePage extends StatefulWidget {
+class BallPage extends StatefulWidget {
+  const BallPage({Key? key}) : super(key: key);
+
   @override
-  State<DicePage> createState() => _DicePageState();
+  _BallPageState createState() => _BallPageState();
 }
 
-class _DicePageState extends State<DicePage> {
-  var leftDiceNum = 1;
-  var rightDiceNum = 4;
-
-  void RandomFunc(){
+class _BallPageState extends State<BallPage> {
+  var num = 1;
+  void RandomFunc() {
     setState(() {
-      leftDiceNum = Random().nextInt(6) + 1;
-      rightDiceNum = Random().nextInt(6) + 1;
+      num = Random().nextInt(5) + 1;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Center(
@@ -49,17 +48,10 @@ class _DicePageState extends State<DicePage> {
             Expanded(
                 flex: 1,
                 child: TextButton(
-                    onPressed: (){
+                    onPressed: () {
                       RandomFunc();
                     },
-                    child: Image(image: AssetImage("images/dice$leftDiceNum.png")))),
-            Expanded(
-                flex: 1,
-                child: TextButton(
-                    onPressed: (){
-                      RandomFunc();
-                    },
-                    child: Image(image: AssetImage("images/dice$rightDiceNum.png")))),
+                    child: Image(image: AssetImage("images/ball$num.png")))),
           ],
         ),
       ),
