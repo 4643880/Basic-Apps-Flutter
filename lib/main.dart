@@ -1,60 +1,67 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
+import 'package:audioplayers/audioplayers.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.blue.shade600,
+        // backgroundColor: Colors.blue.shade600,
         appBar: AppBar(
-          title: const Center(child: Text('Ask Me Anything')),
-          backgroundColor: Colors.blue,
+          title: const Center(child: Text('Xylophone')),
+          backgroundColor: Colors.lime,
         ),
-        body: const BallPage(),
-      ),
-    );
-  }
-}
-
-class BallPage extends StatefulWidget {
-  const BallPage({Key? key}) : super(key: key);
-
-  @override
-  _BallPageState createState() => _BallPageState();
-}
-
-class _BallPageState extends State<BallPage> {
-  var num = 1;
-  void RandomFunc() {
-    setState(() {
-      num = Random().nextInt(5) + 1;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Center(
-        child: Row(
+        body: Column(
           children: [
-            Expanded(
-                flex: 1,
-                child: TextButton(
-                    onPressed: () {
-                      RandomFunc();
-                    },
-                    child: Image(image: AssetImage("images/ball$num.png")))),
+            Button(Colors.red, 1),
+            Button(Colors.orange, 2),
+            Button(Colors.yellow, 3),
+            Button(Colors.green, 4),
+            Button(Colors.teal, 5),
+            Button(Colors.blue, 6),
+            Button(Colors.deepPurple, 7),
           ],
         ),
       ),
     );
   }
+
+ 
+ Expanded Button(Color color, var num) {
+    return Expanded(
+      child: InkWell(
+            onTap: (){
+              final player = AudioCache();
+              player.play('note$num.wav');
+            },
+            child: Container(       
+              color: color,
+            ),
+          ),
+    );
+  }
 }
+
+
+
+
+//  InkWell Button(Color color, var num) {
+//     return InkWell(
+//           onTap: (){
+//             final player = AudioCache();
+//             player.play('note$num.wav');
+//           },
+//           child: Container(
+//             height: 50,
+//             width: double.infinity,            
+//             color: color,
+//           ),
+//         );
+//   }
+// }
