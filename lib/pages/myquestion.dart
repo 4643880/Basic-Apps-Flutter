@@ -1,9 +1,9 @@
-class QuestionClass {
+class MyQuestionClass {
   String questionText;
-  bool questionAnswer;
-
-  QuestionClass(
-    this.questionText,
-    this.questionAnswer,
+  bool questionsAns;
+  MyQuestionClass(
+     this.questionText,
+     this.questionsAns,
   );
+  
 }

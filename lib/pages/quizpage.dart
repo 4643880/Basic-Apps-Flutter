@@ -19,49 +19,7 @@ class _QuizAppPageState extends State<QuizAppPage> {
     // const Icon(Icons.close, color: Colors.red,),    
   ];
 
-  // Answers Checking Function
-  void answerCheckingFunc(bool usersAns){
-    setState(() {       
-        
-        if(brainObj.FinishedFunc() == true){
-          brainObj.reset();
-
-          // List will be empty and will not overflow
-          scoreKeeperList = [];
-
-          Alert(
-                context: context,
-                title: "Finished!",
-                desc: "You have reached the end of Quiz."
-                ).show();          
-          }
-           
-        else{
-            bool correctAns = brainObj.getQuestionsAnsFunc();
-            if(usersAns == correctAns){
-
-              scoreKeeperList.add(
-              const Icon(Icons.check, color: Colors.green,),
-              );
-
-            }
-            else{
-              scoreKeeperList.add(
-              const Icon(Icons.close, color: Colors.red,),
-              );
-             
-            }
-        }
-        
-
-        brainObj.nextQuestionFunc();
-
-    });
-  }
-
-  // Getting All Questions and Ans with this object
-  QuizBrainClass brainObj = QuizBrainClass();
-
+  // Without Encapsulation Starts Here
   // List<String> questionsList = [
   //   "Is Mr. Nadeem Zaidi HOD of CIT Department?",
   //   "Hafeez Jallandri Composed the verses of Pakistan national Anthem?",
@@ -69,9 +27,45 @@ class _QuizAppPageState extends State<QuizAppPage> {
   //   "The Word 'Urdu' means 'Believers'?",
   //   "PPI is not situated in Lahore?"    
   // ];
-
   // List<bool> answersList = [true, true, true, false, false];
   // int questionCounter = 0;  
+  // Without Encapsulation Ends Here
+
+
+  // MyQuestionClass obj1 = MyQuestionClass(questionText: "Is Mr. Nadeem Zaidi HOD of CIT Department?", questionsAns: true);
+
+  AppBrain obj = AppBrain();  
+
+  void checkingAnsFunc(bool userAns){
+    setState(() {
+      if(obj.isFinishedFunc() == true){
+        obj.resetFunc();
+        scoreKeeperList = [];
+        
+        Alert(
+                context: context,
+                title: "Finished!",
+                desc: "You have reached the end of Quiz."
+                ).show();          
+        }
+        else{
+          bool correctAns = obj.getQuestionAnsFunc();
+          if(correctAns == userAns){
+            scoreKeeperList.add(
+              const Icon(Icons.check, color: Colors.green,),
+          );
+                                  
+          }
+          else{
+            scoreKeeperList.add(
+              const Icon(Icons.close, color: Colors.red,),);
+          }
+          obj.nextQuestionFunc(); 
+        }
+      
+
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +73,6 @@ class _QuizAppPageState extends State<QuizAppPage> {
       child: Padding(
         padding: const EdgeInsets.only(top: 32, right: 32, left: 32, bottom: 5),
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
              Expanded(          
               child: Column(
@@ -87,9 +80,13 @@ class _QuizAppPageState extends State<QuizAppPage> {
                 children: [
                   Align(
                     child: Text(
-                      brainObj.getQuestionTextFunc(),
+                      obj.getQuestionTextFunc(),
+
+                      // Without Encapsulation Starts Here
+                        // questionsList[questionCounter],
+                      // Without Encapsulation Ends Here
                       textAlign: TextAlign.justify,  
-                      style: const TextStyle(
+                      style:  const TextStyle(
                           color: Colors.white,
                           fontSize: 25,
                           fontWeight: FontWeight.bold),
@@ -112,8 +109,21 @@ class _QuizAppPageState extends State<QuizAppPage> {
                       primary: Colors.orange,
                       side: const BorderSide(color: Colors.orange),
                     ),
-                    onPressed: () {
-                      answerCheckingFunc(true);
+                    onPressed: () {                      
+                        checkingAnsFunc(true); 
+                        
+                        // Without Encapsulation Starts Here
+                          // setState(() {
+                          //   bool correctAns = answersList[questionCounter];                  
+                          //   if(correctAns == true){
+                          //     scoreKeeperList.add(
+                          //       const Icon(Icons.check, color: Colors.green,),
+                          //   );
+                          //   questionCounter++;                          
+                          //   }
+                          // });
+                        // Without Encapsulation Ends Here
+                     
                     },
                     child: const Text(
                       "True",
@@ -131,8 +141,19 @@ class _QuizAppPageState extends State<QuizAppPage> {
                       primary: Colors.red,
                       side: const BorderSide(color: Colors.red),
                     ),
-                    onPressed: () {
-                      answerCheckingFunc(false);
+                    onPressed: () {                     
+                       checkingAnsFunc(false);    
+                      // Without Encapsulation Starts Here
+                        // setState(() {
+                        //   bool wrongAns = answersList[questionCounter];                  
+                        //   if(wrongAns == true){
+                        //     scoreKeeperList.add(
+                        //       const Icon(Icons.close, color: Colors.red,),
+                        //   );
+                        //   questionCounter++;                          
+                        //   }
+                        // });  
+                      // Without Encapsulation Ends Here        
                     },
                     child: const Text(
                       "False",
@@ -145,7 +166,7 @@ class _QuizAppPageState extends State<QuizAppPage> {
                   ),
                   const Divider(thickness: 2, color: Colors.amber),                    
                   Row(
-                    children: scoreKeeperList,                    
+                    children: scoreKeeperList,                
                   ),
                 ],
               ),

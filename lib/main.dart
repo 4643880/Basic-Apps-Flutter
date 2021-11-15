@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           title: const Center(child: Text('Quiz App')),
           backgroundColor: Colors.amber,
         ),
-        body: QuizAppPage(),
+        body: const QuizAppPage(),
       ),
     );
   }
