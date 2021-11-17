@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learning_with_angela/pages/quizpage.dart';
-
-
+import 'package:flutter_learning_with_angela/pages/input_page_file.dart';
+import 'package:flutter_learning_with_angela/widgets.dart/my_theme.dart';
 void main() {
-  runApp( MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,14 +11,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // theme: ThemeData.dark().copyWith(
+      //   appBarTheme: const AppBarTheme(
+      //   color: Color(0xff0C1135),
+      //   shadowColor: Colors.black,
+      //   elevation: 30.0,
+      //   ),
+      // ),
+      // theme: MyTheme.appTheme(context),
+      // themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.black26,
         appBar: AppBar(
-          title: const Center(child: Text('Quiz App')),
-          backgroundColor: Colors.amber,
+          title: const Center(child: Text('BMI Calculator')),          
         ),
-        body: const QuizAppPage(),
+        body: const InputPage(),
       ),
     );
   }
