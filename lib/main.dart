@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       //   elevation: 30.0,
       //   ),
       // ),
-      // theme: MyTheme.appTheme(context),
+      theme: MyTheme.appTheme(context),
       // themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       home: Scaffold(
