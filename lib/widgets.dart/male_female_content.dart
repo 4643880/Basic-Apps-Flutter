@@ -25,32 +25,30 @@ class MaleAndFemaleWidget extends StatelessWidget {
 
 
  // Updating Color On Click 
-const myReusableContainerActiveColor =  Color(0xff272A4D);
-const myReusableContainerInActiveColor =  Color(0xff111327);
+// const myReusableContainerActiveColor =  Color(0xff272A4D);
+// const myReusableContainerInActiveColor =  Color(0xff111327);
 
-  Color maleCardColor = myReusableContainerInActiveColor;
-  Color femaleCardColor = myReusableContainerInActiveColor;
+//   Color maleCardColor = myReusableContainerInActiveColor;
+//   Color femaleCardColor = myReusableContainerInActiveColor;
   
-  enum GenderEnum {male , female}
-  void updateColorFunc(GenderEnum gender){
-    // 1 is male and 2 is female
-    
-    if(gender == GenderEnum.male){
-      if(maleCardColor == myReusableContainerInActiveColor){
-        maleCardColor = myReusableContainerActiveColor;
-        femaleCardColor = myReusableContainerInActiveColor;        
-      }else{
-        maleCardColor = myReusableContainerInActiveColor;
-        femaleCardColor = myReusableContainerInActiveColor;       
-      }
-    }
-    if(gender == GenderEnum.female){
-      if(femaleCardColor ==  myReusableContainerInActiveColor){
-        femaleCardColor = myReusableContainerActiveColor;  
-        maleCardColor = myReusableContainerInActiveColor;      
-      }else{
-        femaleCardColor = myReusableContainerInActiveColor;
-        maleCardColor = myReusableContainerInActiveColor;
-      }
-    }
-  }
+  // enum GenderEnum {male , female}
+  // void updateColorFunc(GenderEnum gender){    
+  //   if(gender == GenderEnum.male){
+  //     if(maleCardColor == myReusableContainerInActiveColor){
+  //       maleCardColor = myReusableContainerActiveColor;
+  //       femaleCardColor = myReusableContainerInActiveColor;        
+  //     }else{
+  //       maleCardColor = myReusableContainerInActiveColor;
+  //       femaleCardColor = myReusableContainerInActiveColor;       
+  //     }
+  //   }
+  //   if(gender == GenderEnum.female){
+  //     if(femaleCardColor ==  myReusableContainerInActiveColor){
+  //       femaleCardColor = myReusableContainerActiveColor;  
+  //       maleCardColor = myReusableContainerInActiveColor;      
+  //     }else{
+  //       femaleCardColor = myReusableContainerInActiveColor;
+  //       maleCardColor = myReusableContainerInActiveColor;
+  //     }
+  //   }
+  // }

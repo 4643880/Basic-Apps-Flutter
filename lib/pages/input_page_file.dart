@@ -9,6 +9,9 @@ const myBottomContainerColor = Color(0xffeb1556);
 const myReusableContainerActiveColor =  Color(0xff272A4D);
 const myReusableContainerInActiveColor =  Color(0xff111327);
 
+enum GenderEnum {male , female}
+GenderEnum? selectingGender;
+
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
 
@@ -32,11 +35,11 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: (){
                       setState(() {
-                        updateColorFunc(GenderEnum.male);
+                        selectingGender = GenderEnum.male ;
                       });
                     },
                     child: MyReusableContainer(
-                      color: maleCardColor,
+                      color: selectingGender == GenderEnum.male  ? myReusableContainerActiveColor : myReusableContainerInActiveColor,
                       myCardChild: const MaleAndFemaleWidget(iconName: FontAwesomeIcons.mars, titleName: "Male",),
                       ),
                   ),
@@ -45,11 +48,11 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: (){
                       setState(() {
-                        updateColorFunc(GenderEnum.female);
+                        selectingGender = GenderEnum.female;
                       });
                     },
                     child: MyReusableContainer(
-                      color: femaleCardColor,
+                      color: selectingGender == GenderEnum.female  ? myReusableContainerActiveColor : myReusableContainerInActiveColor ,
                       myCardChild: const MaleAndFemaleWidget(iconName: FontAwesomeIcons.venus, titleName: "Female",),
                       ),
                   ),
