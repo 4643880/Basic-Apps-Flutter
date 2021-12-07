@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning_with_angela/widgets.dart/myconstants.dart';
 
 class MyTheme{
   static appTheme(BuildContext context) => ThemeData(
@@ -11,11 +12,31 @@ class MyTheme{
       shadowColor: Colors.black,
       elevation: 30.0,
     ),
+
+
+    sliderTheme:  const SliderThemeData(   
+      activeTrackColor: kactiveSliderColor,    
+      thumbColor: kBottomContainerColor, 
+      inactiveTrackColor: kInactiveSliderColor, 
+      overlayColor: kSliderOverlayColor,                         
+      // activeColor: kBottomContainerColor,
+      // inactiveColor: kLabelStyling.color,
+      // thumbColor: Colors.green,
+      thumbShape: RoundSliderThumbShape(        
+        enabledThumbRadius: 12,        
+      ),
+      // overlayShape: RoundSliderOverlayShape(
+      //   overlayRadius: 18
+      // )
+      // activeTrackColor: Color(0xffffffff),      
+      // thumbShape: SliderComponentShape.noThumb,
+    ),
+
+
+
     textTheme: const TextTheme(
       // bodyText1: TextStyle(color: Colors.red),
       bodyText2: TextStyle(color: Colors.white),
-       
-
     ),
 
   );

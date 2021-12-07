@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning_with_angela/pages/demo_page.dart';
 import 'package:flutter_learning_with_angela/pages/input_page_file.dart';
+import 'package:flutter_learning_with_angela/pages/result_page.dart';
+import 'package:flutter_learning_with_angela/pages/utils/routes.dart';
 import 'package:flutter_learning_with_angela/widgets.dart/my_theme.dart';
 void main() {
   runApp(const MyApp());
@@ -27,6 +30,12 @@ class MyApp extends StatelessWidget {
         ),
         body: const InputPage(),
       ),
+      // initialRoute: MyRoutes.inputRoute,
+      routes: {
+        MyRoutes.inputRoute: (context) => const InputPage(),
+        MyRoutes.resultPageRoute : (context) => const ResultPage(),
+        MyRoutes.demoPageRoute : (context) => const DemoPage(),
+      },
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning_with_angela/widgets.dart/myconstants.dart';
 
 
 class MaleAndFemaleWidget extends StatelessWidget {
@@ -13,9 +14,9 @@ class MaleAndFemaleWidget extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(iconName, size: 75, color: Colors.white,),
+        Icon(iconName, size: 75, color: kIconColor,),
         const SizedBox(height: 10,),
-        Text(titleName?? "", style: const TextStyle(color: Color(0xff8d8e99),), textScaleFactor: 1.6,),
+        Text(titleName?? "", style: kLabelStyling),
       ],
     );
   }
