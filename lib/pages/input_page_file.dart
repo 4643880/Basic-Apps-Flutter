@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learning_with_angela/pages/demo_page.dart';
+import 'package:flutter_learning_with_angela/pages/calculator_brain.dart';
+import 'package:flutter_learning_with_angela/pages/input_page_widgets/bottom_button.dart';
+import 'package:flutter_learning_with_angela/pages/input_page_widgets/rounded_icon_widget.dart';
 import 'package:flutter_learning_with_angela/pages/result_page.dart';
-import 'package:flutter_learning_with_angela/pages/utils/routes.dart';
+import 'package:flutter_learning_with_angela/utils/routes.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:flutter_learning_with_angela/widgets.dart/male_female_content.dart';
 import 'package:flutter_learning_with_angela/widgets.dart/myconstants.dart';
 import 'package:flutter_learning_with_angela/widgets.dart/reusable_container.dart';
@@ -13,8 +14,8 @@ enum GenderEnum { male, female }
 GenderEnum? selectingGender;
 
 int _currentSliderValue = 160;
-int _weightValue = 10;
-int _ageValue = 10;
+int _weightValue = 60;
+int _ageValue = 20;
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -29,8 +30,9 @@ class _InputPageState extends State<InputPage> {
     return SingleChildScrollView(
       child: Column(
         children: [
+          SizedBox(height: 30,),
           Container(
-            height: 170,
+            height: 180,
             child: Row(
               children: [
                 Expanded(
@@ -117,7 +119,7 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Container(
-            height: 170,
+            height: 180,
             child: Row(
               children: [
                 Expanded(
@@ -172,6 +174,7 @@ class _InputPageState extends State<InputPage> {
                   child: MyReusableContainer(
                     color: kReusableContainerInActiveColor,
                     myCardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
                           "Age",
@@ -215,34 +218,25 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, MyRoutes.resultPageRoute);
-            },
-            child: Container(
-                margin: const EdgeInsets.only(top: 15),
-                color: kBottomContainerColor,
-                height: kBottomContainerHeight,
-                width: double.infinity,
-                child: const Center(
-                  child:
-                      Text("Go to Result Page", style: TextStyle(fontSize: 25)),
-                )),
+          Container(
+            child: const Padding(
+              padding: EdgeInsets.all(25.0),
+              child: Text("Designed by Aizaz Haider", style: TextStyle()),
+            ),
           ),
-          InkWell(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => DemoPage()));
+          // SizedBox(height: 70,),
+          MyBottomButton(
+            buttonName: "Calculate",
+            onClick: () {
+
+              CalculatorBrain obj = CalculatorBrain(height: _currentSliderValue, weight: _weightValue);
+
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ResultPage(                
+                bmiResult: obj.calculateFunc(),
+                bmiText: obj.textResultFunc() ,
+                bmiFeedback: obj.feedbackFunc(),
+                ) ));
             },
-            child: Container(
-                margin: const EdgeInsets.only(top: 15),
-                color: kBottomContainerColor,
-                height: kBottomContainerHeight,
-                width: double.infinity,
-                child: const Center(
-                  child:
-                      Text("Go to Demo Page", style: TextStyle(fontSize: 25)),
-                )),
           ),
         ],
       ),
@@ -250,21 +244,4 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class MyRoundedIconButton extends StatelessWidget {
-  const MyRoundedIconButton({Key? key, this.mychild, this.updateWidthFunc})
-      : super(key: key);
-  final Widget? mychild;
-  final Function()? updateWidthFunc;
 
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      hoverColor: Colors.green,
-      constraints: const BoxConstraints.tightFor(height: 40, width: 40),
-      shape: const CircleBorder(),
-      fillColor: kBottomContainerColor,
-      child: mychild,
-      onPressed: updateWidthFunc,
-    );
-  }
-}

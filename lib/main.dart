@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learning_with_angela/pages/demo_page.dart';
 import 'package:flutter_learning_with_angela/pages/input_page_file.dart';
 import 'package:flutter_learning_with_angela/pages/result_page.dart';
-import 'package:flutter_learning_with_angela/pages/utils/routes.dart';
+import 'package:flutter_learning_with_angela/utils/routes.dart';
 import 'package:flutter_learning_with_angela/widgets.dart/my_theme.dart';
 void main() {
   runApp(const MyApp());
@@ -13,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp(      
       // theme: ThemeData.dark().copyWith(
       //   appBarTheme: const AppBarTheme(
       //   color: Color(0xff0C1135),
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: MyTheme.appTheme(context),
       // themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
+      home: Scaffold(        
         appBar: AppBar(
           title: const Center(child: Text('BMI Calculator')),          
         ),
@@ -33,8 +32,7 @@ class MyApp extends StatelessWidget {
       // initialRoute: MyRoutes.inputRoute,
       routes: {
         MyRoutes.inputRoute: (context) => const InputPage(),
-        MyRoutes.resultPageRoute : (context) => const ResultPage(),
-        MyRoutes.demoPageRoute : (context) => const DemoPage(),
+        // MyRoutes.resultPageRoute : (context) => const ResultPage(),
       },
     );
   }

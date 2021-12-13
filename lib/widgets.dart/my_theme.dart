@@ -38,6 +38,7 @@ class MyTheme{
       // bodyText1: TextStyle(color: Colors.red),
       bodyText2: TextStyle(color: Colors.white),
     ),
+    iconTheme: IconThemeData(color: Colors.white),
 
   );
 }
